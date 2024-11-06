@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/API';
+import { searchGithub} from '../api/API';
 import { Candidate } from "../interfaces/Candidate.interface";
 
 const CandidateSearch: React.FC = () => {
@@ -73,13 +73,12 @@ const CandidateSearch: React.FC = () => {
     <div className="candidate-search">
       {currentCandidate ? (
         <div className="candidate-card">
-          <img src={currentCandidate.avatar_url} alt={`${currentCandidate.username}'s avatar`} width={100} />
-          <h2>{currentCandidate.name || currentCandidate.username}</h2>
-          <p><strong>Username:</strong> {currentCandidate.username}</p>
+          <img src={currentCandidate.avatar_url} alt={`${currentCandidate.login}'s avatar`} width={100} />
+          <h2>{currentCandidate.login}</h2>
           <p><strong>Location:</strong> {currentCandidate.location || 'N/A'}</p>
           <p><strong>Email:</strong> {currentCandidate.email || 'N/A'}</p>
           <p><strong>Company:</strong> {currentCandidate.company || 'N/A'}</p>
-          <p><strong>GitHub:</strong> <a href={currentCandidate.html_url} target="_blank" rel="noopener noreferrer">{currentCandidate.html_url}</a></p>
+          <p><strong>Bio:</strong> need to complete</p>
           <div className="buttons">
             <button onClick={handleSave}>+</button>
             <button onClick={handleSkip}>-</button>

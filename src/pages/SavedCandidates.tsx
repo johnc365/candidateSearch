@@ -21,34 +21,30 @@ const SavedCandidates: React.FC = () => {
   return (
     <div className="saved-candidates">
       <h1>Potential Candidates</h1>
-      <table>
+      <table className='table'>
         <thead>
           <tr>
-            <th>Avatar</th>
+            <th>Image</th>
             <th>Name</th>
-            <th>Username</th>
             <th>Location</th>
             <th>Email</th>
             <th>Company</th>
-            <th>GitHub Profile</th>
+            <th>Bio</th>
+            <th>Reject</th>
           </tr>
         </thead>
         <tbody>
           {savedCandidates.map((candidate) => (
             <tr key={candidate.id}>
               <td>
-                <img src={candidate.avatar_url} alt={`${candidate.username}'s avatar`} width={50} />
+                <img src={candidate.avatar_url} alt={`${candidate.login}'s avatar`} width={50} />
               </td>
-              <td>{candidate.name || 'N/A'}</td>
-              <td>{candidate.username}</td>
+              <td>{candidate.login}</td>
               <td>{candidate.location || 'N/A'}</td>
               <td>{candidate.email || 'N/A'}</td>
               <td>{candidate.company || 'N/A'}</td>
-              <td>
-                <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">
-                  View Profile
-                </a>
-              </td>
+              <td>need to complete</td>
+              <td>need to complete</td>
             </tr>
           ))}
         </tbody>
