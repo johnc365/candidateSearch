@@ -14,6 +14,14 @@ const SavedCandidates: React.FC = () => {
     }
   }, []);
 
+  const handleReject = (candidateId: number) => {
+    const updatedCandidates = savedCandidates.filter(candidate => candidate.id !== candidateId);
+    
+    localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
+    
+    setSavedCandidates(updatedCandidates);
+  };
+
   if (savedCandidates.length === 0) {
     return <p>{error}</p>;
   }
@@ -21,7 +29,7 @@ const SavedCandidates: React.FC = () => {
   return (
     <div className="saved-candidates">
       <h1>Potential Candidates</h1>
-      <table className='table'>
+      <table className="table">
         <thead>
           <tr>
             <th>Image</th>
@@ -44,7 +52,9 @@ const SavedCandidates: React.FC = () => {
               <td>{candidate.email || 'N/A'}</td>
               <td>{candidate.company || 'N/A'}</td>
               <td>need to complete</td>
-              <td>need to complete</td>
+              <td>
+                <button onClick={() => handleReject(candidate.id)}>Reject</button>
+              </td>
             </tr>
           ))}
         </tbody>
